@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InsightHub — Search Less. Know More.</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Roboto:wght@300;400;500&family=Roboto+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Reading progress -->
+    <div id="progress-bar"></div>
+
+    <!-- Search Overlay -->
+    <div class="search-overlay" id="searchOverlay">
+        <div class="search-box">
+            <div class="search-box-header">
+                <input type="text" id="overlaySearch" placeholder="Search articles, topics, authors…" autofocus>
+                <button class="search-close" onclick="closeSearch()">✕</button>
+            </div>
+            <div class="search-suggestions">
+                <div class="suggestion-item"><span class="suggestion-icon">🔥</span> AI & Machine Learning Trends</div>
+                <div class="suggestion-item"><span class="suggestion-icon">💡</span> Productivity Tips 2025</div>
+                <div class="suggestion-item"><span class="suggestion-icon">🌍</span> Climate Tech Innovations</div>
+                <div class="suggestion-item"><span class="suggestion-icon">📱</span> Mobile Development Best Practices
+                </div>
+                <div class="suggestion-item"><span class="suggestion-icon">🔐</span> Cybersecurity for Beginners</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ─── NAVBAR ─── -->
+    <nav>
+        <div class="nav-inner">
+            <a href="#" class="logo">
+                <svg class="logo-icon" viewBox="0 0 36 36" fill="none">
+                    <circle cx="12" cy="12" r="9" fill="#4285F4" opacity="0.9" />
+                    <circle cx="24" cy="12" r="9" fill="#34A853" opacity="0.9" />
+                    <circle cx="12" cy="24" r="9" fill="#FBBC05" opacity="0.9" />
+                    <circle cx="24" cy="24" r="9" fill="#EA4335" opacity="0.9" />
+                    <circle cx="18" cy="18" r="6" fill="white" opacity="0.95" />
+                    <text x="18" y="22" text-anchor="middle" font-family="Montserrat,sans-serif" font-weight="900"
+                        font-size="9" fill="#4285F4">I</text>
+                </svg>
+                <div class="logo-text">
+                    <span>Insight</span><span>Hub</span>
+                </div>
+            </a>
+
+            <div class="nav-search">
+                <input type="text" placeholder="Search articles…" onclick="openSearch()">
+                <span class="search-icon">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8" />
+                        <path d="m21 21-4.35-4.35" />
+                    </svg>
+                </span>
+            </div>
+
+            <div class="nav-links">
+                <a href="#" class="active">Home</a>
+                <a href="#">Tech</a>
+                <a href="#">Science</a>
+                <a href="#">Business</a>
+                <a href="#">Design</a>
+            </div>
+
+            <div class="nav-actions">
+                <button class="btn btn-primary" onclick="openSearch()">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8" />
+                        <path d="m21 21-4.35-4.35" />
+                    </svg>
+                    Search
+                </button>
+                <button class="hamburger" id="hamburger" onclick="toggleMenu()">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="search-wrap">
+            <input type="text" placeholder="Search articles…" onclick="openSearch()">
+            <span class="search-icon-mob">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8" />
+                    <path d="m21 21-4.35-4.35" />
+                </svg>
+            </span>
+        </div>
+        <div class="mobile-links">
+            <a href="#">Home</a>
+            <a href="#">Tech</a>
+            <a href="#">Science</a>
+            <a href="#">Business</a>
+            <a href="#">Design</a>
+            <a href="#">Health</a>
+            <a href="#">Culture</a>
+        </div>
+    </div>
+
+    <!-- ─── HERO ─── -->
+    <section class="hero">
+        <div class="hero-tag">✦ Weekly Edition</div>
+        <h1>Discover Ideas That <em>Matter</em></h1>
+        <p>Your daily source for cutting-edge insights in technology, science, business, and beyond. Curated by experts,
+            built for curious minds.</p>
+        <div class="hero-search">
+            <input type="text" placeholder="What do you want to explore today?" onclick="openSearch()">
+            <button onclick="openSearch()">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8" />
+                    <path d="m21 21-4.35-4.35" />
+                </svg>
+            </button>
+        </div>
+        <div class="hero-stats">
+            <div class="stat">
+                <div class="stat-num">2.4<span>K</span></div>
+                <div class="stat-label">Articles Published</div>
+            </div>
+            <div class="stat">
+                <div class="stat-num">180<span>+</span></div>
+                <div class="stat-label">Expert Writers</div>
+            </div>
+            <div class="stat">
+                <div class="stat-num">920<span>K</span></div>
+                <div class="stat-label">Monthly Readers</div>
+            </div>
+            <div class="stat">
+                <div class="stat-num">48</div>
+                <div class="stat-label">Topic Categories</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── CATEGORIES ─── -->
+    <div class="categories">
+        <div class="cat-list">
+            <button class="cat-pill active" onclick="filterCat(this)"><span class="dot"></span>All</button>
+            <button class="cat-pill" onclick="filterCat(this)">🤖 AI & ML</button>
+            <button class="cat-pill" onclick="filterCat(this)">💻 Development</button>
+            <button class="cat-pill" onclick="filterCat(this)">🌱 Climate</button>
+            <button class="cat-pill" onclick="filterCat(this)">💰 Finance</button>
+            <button class="cat-pill" onclick="filterCat(this)">🎨 Design</button>
+            <button class="cat-pill" onclick="filterCat(this)">🔬 Science</button>
+            <button class="cat-pill" onclick="filterCat(this)">🧠 Psychology</button>
+            <button class="cat-pill" onclick="filterCat(this)">🚀 Startups</button>
+            <button class="cat-pill" onclick="filterCat(this)">❤️ Health</button>
+        </div>
+    </div>
+
+    <!-- ─── MAIN CONTENT ─── -->
+    <div class="main">
+        <!-- Primary Content -->
+        <div class="content-area">
+
+            <!-- Featured -->
+            <div class="section-header fade-up">
+                <div class="section-title">Featured Story</div>
+                <a href="#" class="see-all">Editor's Picks →</a>
+            </div>
+
+            <div class="featured-card fade-up fade-up-d1">
+                <div class="featured-img">
+                    <div class="featured-img-placeholder">🧠</div>
+                </div>
+                <div class="featured-body">
+                    <div class="featured-meta">
+                        <span class="tag tag-blue">AI & Machine Learning</span>
+                        <span class="meta-dot">•</span>
+                        <span class="meta-time">8 min read</span>
+                        <span class="meta-dot">•</span>
+                        <span class="meta-time">May 10, 2026</span>
+                    </div>
+                    <h2 class="featured-title">The Quiet Revolution: How Ambient AI Is Reshaping the Way We Think and
+                        Work</h2>
+                    <p class="featured-excerpt">Forget chatbots and dashboards. The next phase of AI isn't about asking
+                        questions—it's about systems that understand context before you even frame a thought. From
+                        predictive interfaces to cognitive offloading, we explore how ambient intelligence is becoming
+                        the invisible infrastructure of modern life.</p>
+                    <div class="featured-footer">
+                        <div class="author">
+                            <div class="avatar-placeholder"
+                                style="background: linear-gradient(135deg, #4285F4, #34A853);">SR</div>
+                            <div>
+                                <div class="author-name">Sofia Reyes</div>
+                                <div class="author-role">Senior Tech Correspondent</div>
+                            </div>
+                        </div>
+                        <a href="#" class="read-btn">Read Article →</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Latest Posts -->
+            <div class="section-header fade-up fade-up-d2">
+                <div class="section-title">Latest Articles</div>
+                <a href="#" class="see-all">View all →</a>
+            </div>
+
+            <div class="post-grid" id="postGrid">
+
+                <div class="post-card fade-up fade-up-d1">
+                    <div class="post-img" style="background: linear-gradient(135deg, #e6f4ea, #d4edda);">🌱</div>
+                    <div class="post-body">
+                        <div class="post-meta">
+                            <span class="tag tag-green">Climate</span>
+                            <span class="meta-time">5 min</span>
+                        </div>
+                        <h3 class="post-title">Direct Air Capture Plants Are Finally Becoming Cost-Effective</h3>
+                        <p class="post-excerpt">New modular designs are slashing the cost per ton of CO₂ removal,
+                            opening doors to large-scale carbon drawdown by 2028.</p>
+                        <div class="post-footer">
+                            <div class="post-author-sm">
+                                <div class="avatar-placeholder"
+                                    style="background: linear-gradient(135deg, #34A853, #0f9d58);">AK</div>
+                                <div class="post-author-name">Amir Khan</div>
+                            </div>
+                            <div class="post-date">May 9</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="post-card fade-up fade-up-d2">
+                    <div class="post-img" style="background: linear-gradient(135deg, #fef7e0, #fff3cd);">💰</div>
+                    <div class="post-body">
+                        <div class="post-meta">
+                            <span class="tag tag-yellow">Finance</span>
+                            <span class="meta-time">6 min</span>
+                        </div>
+                        <h3 class="post-title">Why Central Banks Are Quietly Building Digital Currency Infrastructure
+                        </h3>
+                        <p class="post-excerpt">More than 130 countries are now in advanced stages of CBDC development.
+                            Here's what that means for everyday banking and privacy.</p>
+                        <div class="post-footer">
+                            <div class="post-author-sm">
+                                <div class="avatar-placeholder"
+                                    style="background: linear-gradient(135deg, #FBBC05, #f29900);">LM</div>
+                                <div class="post-author-name">Leila Morris</div>
+                            </div>
+                            <div class="post-date">May 8</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="post-card fade-up fade-up-d3">
+                    <div class="post-img" style="background: linear-gradient(135deg, #fce8e6, #fad2cf);">🔐</div>
+                    <div class="post-body">
+                        <div class="post-meta">
+                            <span class="tag tag-red">Security</span>
+                            <span class="meta-time">4 min</span>
+                        </div>
+                        <h3 class="post-title">Post-Quantum Cryptography: Why Your Passwords Need an Upgrade Now</h3>
+                        <p class="post-excerpt">NIST's finalized post-quantum standards are here. Security experts
+                            explain what companies must do before 2027 to stay protected.</p>
+                        <div class="post-footer">
+                            <div class="post-author-sm">
+                                <div class="avatar-placeholder"
+                                    style="background: linear-gradient(135deg, #EA4335, #c5221f);">DT</div>
+                                <div class="post-author-name">David Torres</div>
+                            </div>
+                            <div class="post-date">May 7</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="post-card fade-up fade-up-d4">
+                    <div class="post-img" style="background: linear-gradient(135deg, #e8f0fe, #d2e3fc);">🎨</div>
+                    <div class="post-body">
+                        <div class="post-meta">
+                            <span class="tag tag-blue">Design</span>
+                            <span class="meta-time">7 min</span>
+                        </div>
+                        <h3 class="post-title">The Spatial Web: Designing Interfaces for Mixed Reality Environments</h3>
+                        <p class="post-excerpt">As XR headsets hit mainstream adoption, UX designers face an entirely
+                            new canvas—one with depth, gesture, and ambient awareness.</p>
+                        <div class="post-footer">
+                            <div class="post-author-sm">
+                                <div class="avatar-placeholder"
+                                    style="background: linear-gradient(135deg, #4285F4, #1a73e8);">NP</div>
+                                <div class="post-author-name">Nina Park</div>
+                            </div>
+                            <div class="post-date">May 6</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="post-card fade-up fade-up-d1" style="display:none;" data-extra>
+                    <div class="post-img" style="background: linear-gradient(135deg, #f3e8ff, #e9d5ff);">🔬</div>
+                    <div class="post-body">
+                        <div class="post-meta">
+                            <span class="tag tag-blue">Science</span>
+                            <span class="meta-time">9 min</span>
+                        </div>
+                        <h3 class="post-title">CRISPR 3.0: Precision Gene Editing Without the Off-Target Errors</h3>
+                        <p class="post-excerpt">A new generation of base editors promises therapeutic gene editing with
+                            near-zero unintended mutations, potentially clearing FDA approval hurdles.</p>
+                        <div class="post-footer">
+                            <div class="post-author-sm">
+                                <div class="avatar-placeholder"
+                                    style="background: linear-gradient(135deg, #9333ea, #7c3aed);">KW</div>
+                                <div class="post-author-name">Kenji Wu</div>
+                            </div>
+                            <div class="post-date">May 5</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="post-card fade-up fade-up-d2" style="display:none;" data-extra>
+                    <div class="post-img" style="background: linear-gradient(135deg, #e0f2fe, #bae6fd);">🚀</div>
+                    <div class="post-body">
+                        <div class="post-meta">
+                            <span class="tag tag-blue">Startups</span>
+                            <span class="meta-time">5 min</span>
+                        </div>
+                        <h3 class="post-title">The $100B Moment: How Climate Tech Became the New SaaS Gold Rush</h3>
+                        <p class="post-excerpt">Venture capital has quietly pivoted. Climate startups are attracting the
+                            same valuations that once defined the cloud-software era.</p>
+                        <div class="post-footer">
+                            <div class="post-author-sm">
+                                <div class="avatar-placeholder"
+                                    style="background: linear-gradient(135deg, #0ea5e9, #0284c7);">RL</div>
+                                <div class="post-author-name">Rachel Lee</div>
+                            </div>
+                            <div class="post-date">May 4</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="load-more-wrap">
+                <button class="btn-load" id="loadMoreBtn" onclick="loadMore()">Load More Articles</button>
+            </div>
+
+        </div>
+
+        <!-- ─── SIDEBAR ─── -->
+        <aside class="sidebar">
+
+            <!-- Newsletter -->
+            <div class="widget newsletter-widget">
+                <div class="widget-title">📬 Stay in the Loop</div>
+                <p>Get the most insightful articles delivered to your inbox every Tuesday and Friday.</p>
+                <input type="email" placeholder="your@email.com">
+                <button class="btn-subscribe" onclick="handleSubscribe(this)">Subscribe Free →</button>
+            </div>
+
+            <!-- Trending -->
+            <div class="widget">
+                <div class="widget-title">🔥 Trending Now</div>
+                <ul class="trending-list">
+                    <li class="trending-item">
+                        <div class="trending-num">01</div>
+                        <div class="trending-content">
+                            <div class="trending-title">How GPT-5 Is Changing Scientific Research Forever</div>
+                            <div class="trending-meta">32K views · 3 days ago</div>
+                        </div>
+                    </li>
+                    <li class="trending-item">
+                        <div class="trending-num">02</div>
+                        <div class="trending-content">
+                            <div class="trending-title">The Psychology Behind Viral Misinformation</div>
+                            <div class="trending-meta">28K views · 5 days ago</div>
+                        </div>
+                    </li>
+                    <li class="trending-item">
+                        <div class="trending-num">03</div>
+                        <div class="trending-content">
+                            <div class="trending-title">Inside Tesla's New Battery Chemistry</div>
+                            <div class="trending-meta">21K views · 1 week ago</div>
+                        </div>
+                    </li>
+                    <li class="trending-item">
+                        <div class="trending-num">04</div>
+                        <div class="trending-content">
+                            <div class="trending-title">The Startup That Wants to Replace Your Doctor</div>
+                            <div class="trending-meta">18K views · 1 week ago</div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Code snippet widget -->
+            <div class="widget">
+                <div class="widget-title">💻 Dev Tip of the Week</div>
+                <p style="font-size:0.82rem;color:#5f6368;margin-bottom:8px;">Debounce your search inputs for better UX:
+                </p>
+                <div class="code-block">
+                    <code>
+<span class="code-comment">// Debounce utility</span><br>
+<span class="code-keyword">const</span> debounce = (fn, ms) => {<br>
+&nbsp;&nbsp;<span class="code-keyword">let</span> timer;<br>
+&nbsp;&nbsp;<span class="code-keyword">return</span> (...args) => {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;clearTimeout(timer);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;timer = setTimeout(<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;() => fn(...args), ms<br>
+&nbsp;&nbsp;&nbsp;&nbsp;);<br>
+&nbsp;&nbsp;};<br>
+};<br>
+<br>
+<span class="code-comment">// Usage</span><br>
+input.addEventListener(<br>
+&nbsp;&nbsp;<span class="code-string">'input'</span>,<br>
+&nbsp;&nbsp;debounce(search, <span class="code-number">300</span>)<br>
+);
+        </code>
+                </div>
+            </div>
+
+            <!-- Tags -->
+            <div class="widget">
+                <div class="widget-title">🏷️ Explore Topics</div>
+                <div class="tags-cloud">
+                    <span class="tag-cloud-item">Artificial Intelligence</span>
+                    <span class="tag-cloud-item">Web Dev</span>
+                    <span class="tag-cloud-item">Climate</span>
+                    <span class="tag-cloud-item">Crypto</span>
+                    <span class="tag-cloud-item">Startups</span>
+                    <span class="tag-cloud-item">UX Design</span>
+                    <span class="tag-cloud-item">Robotics</span>
+                    <span class="tag-cloud-item">Biotech</span>
+                    <span class="tag-cloud-item">Space</span>
+                    <span class="tag-cloud-item">Mental Health</span>
+                    <span class="tag-cloud-item">Quantum</span>
+                    <span class="tag-cloud-item">AR/VR</span>
+                </div>
+            </div>
+
+        </aside>
+    </div>
+
+    <!-- ─── FOOTER ─── -->
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="#" class="logo" style="text-decoration:none;">
+                        <svg width="32" height="32" viewBox="0 0 36 36" fill="none">
+                            <circle cx="12" cy="12" r="9" fill="#4285F4" opacity="0.85" />
+                            <circle cx="24" cy="12" r="9" fill="#34A853" opacity="0.85" />
+                            <circle cx="12" cy="24" r="9" fill="#FBBC05" opacity="0.85" />
+                            <circle cx="24" cy="24" r="9" fill="#EA4335" opacity="0.85" />
+                            <circle cx="18" cy="18" r="6" fill="white" opacity="0.9" />
+                            <text x="18" y="22" text-anchor="middle" font-family="Montserrat,sans-serif"
+                                font-weight="900" font-size="9" fill="#4285F4">I</text>
+                        </svg>
+                        <div class="logo-text">
+                            <span>Insight</span><span>Hub</span>
+                        </div>
+                    </a>
+                    <p>Search less. Know more. Your daily destination for ideas that shape the world—curated by experts,
+                        written for the curious.</p>
+                    <div class="social-links">
+                        <a class="social-link" href="#">X</a>
+                        <a class="social-link" href="#">in</a>
+                        <a class="social-link" href="#">📧</a>
+                        <a class="social-link" href="#">▶</a>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="footer-col-title">Topics</div>
+                    <ul class="footer-links">
+                        <li><a href="#">Artificial Intelligence</a></li>
+                        <li><a href="#">Climate & Environment</a></li>
+                        <li><a href="#">Business & Finance</a></li>
+                        <li><a href="#">Science & Health</a></li>
+                        <li><a href="#">Technology</a></li>
+                        <li><a href="#">Design & Culture</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <div class="footer-col-title">Company</div>
+                    <ul class="footer-links">
+                        <li><a href="#">About InsightHub</a></li>
+                        <li><a href="#">Our Writers</a></li>
+                        <li><a href="#">Advertise</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Press Kit</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <div class="footer-col-title">Resources</div>
+                    <ul class="footer-links">
+                        <li><a href="#">Newsletter</a></li>
+                        <li><a href="#">Podcast</a></li>
+                        <li><a href="#">Weekly Digest</a></li>
+                        <li><a href="#">Submit a Story</a></li>
+                        <li><a href="#">RSS Feed</a></li>
+                        <li><a href="#">Sitemap</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div>© 2026 InsightHub. All rights reserved.</div>
+                <div>
+                    <a href="#">Privacy Policy</a> &nbsp;·&nbsp;
+                    <a href="#">Terms of Service</a> &nbsp;·&nbsp;
+                    <a href="#">Cookie Settings</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to top -->
+    <button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+            stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="18 15 12 9 6 15" />
+        </svg>
+    </button>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
