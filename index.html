@@ -64,11 +64,11 @@
             </div>
 
             <div class="nav-links">
-                <a href="#" class="active">Home</a>
-                <a href="#">Tech</a>
-                <a href="#">Science</a>
-                <a href="#">Business</a>
-                <a href="#">Design</a>
+                <a href="#" class="active" onclick="filterByCategory('all', event); return false;">Home</a>
+                <a href="#" onclick="filterByCategory('tech', event); return false;">Tech</a>
+                <a href="#" onclick="filterByCategory('science', event); return false;">Science</a>
+                <a href="#" onclick="filterByCategory('business', event); return false;">Business</a>
+                <a href="#" onclick="filterByCategory('design', event); return false;">Design</a>
             </div>
 
             <div class="nav-actions">
@@ -100,13 +100,13 @@
             </span>
         </div>
         <div class="mobile-links">
-            <a href="#">Home</a>
-            <a href="#">Tech</a>
-            <a href="#">Science</a>
-            <a href="#">Business</a>
-            <a href="#">Design</a>
-            <a href="#">Health</a>
-            <a href="#">Culture</a>
+            <a href="#" onclick="filterByCategory('all', event); return false;">Home</a>
+            <a href="#" onclick="filterByCategory('tech', event); return false;">Tech</a>
+            <a href="#" onclick="filterByCategory('science', event); return false;">Science</a>
+            <a href="#" onclick="filterByCategory('business', event); return false;">Business</a>
+            <a href="#" onclick="filterByCategory('design', event); return false;">Design</a>
+            <a href="#" onclick="filterByCategory('health', event); return false;">Health</a>
+            <a href="#" onclick="filterByCategory('culture', event); return false;">Culture</a>
         </div>
     </div>
 
@@ -173,7 +173,7 @@
                 <a href="#" class="see-all">Editor's Picks →</a>
             </div>
 
-            <div class="featured-card fade-up fade-up-d1" onclick="openBlogModal({
+            <div class="featured-card fade-up fade-up-d1" data-category="tech" onclick="openBlogModal({
                 title: 'The Quiet Revolution: How Ambient AI Is Reshaping the Way We Think and Work',
                 tag: 'AI & Machine Learning',
                 tagClass: 'tag-blue',
@@ -224,7 +224,7 @@
 
             <div class="post-grid" id="postGrid">
 
-                <div class="post-card fade-up fade-up-d1" onclick="openBlogModal({
+                <div class="post-card fade-up fade-up-d1" data-category="business" onclick="openBlogModal({
                     title: 'Direct Air Capture Plants Are Finally Becoming Cost-Effective',
                     tag: 'Climate',
                     tagClass: 'tag-green',
@@ -256,7 +256,7 @@
                     </div>
                 </div>
 
-                <div class="post-card fade-up fade-up-d2" onclick="openBlogModal({
+                <div class="post-card fade-up fade-up-d2" data-category="business" onclick="openBlogModal({
                     title: 'Why Central Banks Are Quietly Building Digital Currency Infrastructure',
                     tag: 'Finance',
                     tagClass: 'tag-yellow',
@@ -289,7 +289,7 @@
                     </div>
                 </div>
 
-                <div class="post-card fade-up fade-up-d3" onclick="openBlogModal({
+                <div class="post-card fade-up fade-up-d3" data-category="tech" onclick="openBlogModal({
                     title: 'Post-Quantum Cryptography: Why Your Passwords Need an Upgrade Now',
                     tag: 'Security',
                     tagClass: 'tag-red',
@@ -321,7 +321,7 @@
                     </div>
                 </div>
 
-                <div class="post-card fade-up fade-up-d4" onclick="openBlogModal({
+                <div class="post-card fade-up fade-up-d4" data-category="design" onclick="openBlogModal({
                     title: 'The Spatial Web: Designing Interfaces for Mixed Reality Environments',
                     tag: 'Design',
                     tagClass: 'tag-blue',
@@ -353,7 +353,7 @@
                     </div>
                 </div>
 
-                <div class="post-card fade-up fade-up-d1" style="display:none;" data-extra>
+                <div class="post-card fade-up fade-up-d1" style="display:none;" data-extra data-category="science">
                     <div class="post-img" style="background: linear-gradient(135deg, #f3e8ff, #e9d5ff);">🔬</div>
                     <div class="post-body">
                         <div class="post-meta">
@@ -374,7 +374,7 @@
                     </div>
                 </div>
 
-                <div class="post-card fade-up fade-up-d2" style="display:none;" data-extra>
+                <div class="post-card fade-up fade-up-d2" style="display:none;" data-extra data-category="business">
                     <div class="post-img" style="background: linear-gradient(135deg, #e0f2fe, #bae6fd);">🚀</div>
                     <div class="post-body">
                         <div class="post-meta">

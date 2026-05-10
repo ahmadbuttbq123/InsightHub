@@ -66,13 +66,47 @@ document.addEventListener('keydown', e => {
     if ((e.ctrlKey || e.metaKey) && e.key === 'k') { e.preventDefault(); openSearch(); }
 });
 
-// ── Category filter
+// ── Category Filter
+function filterByCategory(category, event) {
+    // Update desktop nav links active state
+    document.querySelectorAll('.nav-links a').forEach(link => link.classList.remove('active'));
+    document.querySelectorAll('.mobile-links a').forEach(link => link.classList.remove('active'));
+    
+    // Set active on clicked link
+    const clickedLink = event?.target?.closest('a');
+    if (clickedLink) clickedLink.classList.add('active');
+    
+    // Filter blog cards
+    const cards = document.querySelectorAll('[data-category]');
+    cards.forEach(card => {
+        if (category === 'all' || card.dataset.category === category) {
+            card.style.display = 'flex';
+            card.style.opacity = '0';
+            card.style.transition = 'opacity 0.3s ease';
+            setTimeout(() => {
+                card.style.opacity = '1';
+            }, 10);
+        } else {
+            card.style.display = 'none';
+        }
+    });
+    
+    // Scroll the categories section into view under the sticky header
+    const categoriesDiv = document.querySelector('.categories');
+    if (categoriesDiv) {
+        const navHeight = document.querySelector('nav')?.offsetHeight || 64;
+        const top = categoriesDiv.getBoundingClientRect().top + window.scrollY - navHeight - 12;
+        window.scrollTo({ top, behavior: 'smooth' });
+    }
+}
+
 function filterCat(btn) {
     document.querySelectorAll('.cat-pill').forEach(p => p.classList.remove('active'));
     btn.classList.add('active');
 }
 
 // ── Load more
+
 function loadMore() {
     const extras = document.querySelectorAll('[data-extra]');
     let shown = 0;

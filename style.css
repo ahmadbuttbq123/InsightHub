@@ -277,6 +277,11 @@ nav {
     color: var(--blue);
 }
 
+.mobile-links a.active {
+    color: var(--blue);
+    background: #e8f0fe;
+}
+
 /* ─── DESKTOP NAV LINKS ─── */
 .nav-links {
     display: none;
