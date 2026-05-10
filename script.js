@@ -7,7 +7,42 @@ window.addEventListener('scroll', () => {
     window.scrollY > 400 ? bt.classList.add('visible') : bt.classList.remove('visible');
 });
 
+// ── Blog Modal
+function openBlogModal(blogData) {
+    const modal = document.getElementById('blogModal');
+    document.getElementById('modalTitle').textContent = blogData.title;
+    document.getElementById('modalTag').textContent = blogData.tag;
+    document.getElementById('modalTag').className = `tag ${blogData.tagClass}`;
+    document.getElementById('modalReadTime').textContent = blogData.readTime + ' read';
+    document.getElementById('modalDate').textContent = blogData.date;
+    document.getElementById('modalBody').innerHTML = blogData.content;
+    document.getElementById('modalAuthorName').textContent = blogData.author;
+    document.getElementById('modalAuthorRole').textContent = blogData.role;
+    document.getElementById('modalAuthorAvatar').textContent = blogData.avatar;
+    document.getElementById('modalAuthorAvatar').style.cssText = blogData.avatarStyle;
+    
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeBlogModal() {
+    const modal = document.getElementById('blogModal');
+    modal.classList.remove('open');
+    document.body.style.overflow = 'auto';
+}
+
+// Close modal on background click
+document.getElementById('blogModal')?.addEventListener('click', e => {
+    if (e.target === document.getElementById('blogModal')) closeBlogModal();
+});
+
+// Close modal on Escape key
+document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeBlogModal();
+});
+
 // ── Hamburger
+
 function toggleMenu() {
     const menu = document.getElementById('mobileMenu');
     const btn = document.getElementById('hamburger');
